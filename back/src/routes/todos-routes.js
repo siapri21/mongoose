@@ -83,7 +83,7 @@ todoRoute.put('/:id', async(req, res) => {
   }
   // 4.2 Si elle existe;
       // 4.2.1: Mettre a jour le titre de la todolist
-      const todoList = await TodoModel.findByIdAndUpdate(todoId²  , {title});
+      const todoList = await TodoModel.findByIdAndUpdate(todoId  , {title});
       // 4.2.1: Retourner la todolist 
       res.json(todoList)
 
