@@ -13,7 +13,9 @@ const TodoListSchema = mongoose.Schema({
     ]
 })
 
-export const TodoModel = mongoose.Model("todolist", TodoListSchema)
+// todolist de la collection dans la bdd
+
+export const TodoModel = mongoose.model("todolist", TodoListSchema)
 
 
 
