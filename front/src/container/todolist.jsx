@@ -46,6 +46,25 @@ function taskList() {
         const data = await reponse.json()
         console.log(data);
     }
+
+
+
+    // Exercice:
+// 1. Ajouter une bouton supprimer pour chaque tache
+// 2. Créer une fonction qui reçoit l'id de la tache
+// async function deleteTodo(id){
+    // 3. Utiliser fetch pour envoyer une requete DELETE a la back end
+    // const response = await fetch("/api/todos/" + id, {
+        // method: "DELETE",
+    // });
+
+
+// }
+// 4. Lier cette fonction avec les bouton de chaque taches
+// const newListTodo = todosLists.filtre((ele) => ele_id != id);
+
+// setTodoList(newListTodo);
+
     return (
 
         <div>
