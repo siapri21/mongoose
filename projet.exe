@@ -1,0 +1,115 @@
+```md
+## Description
+Vous allez créer un application React, qui permet:
+- [ ] Navigation entre pages
+- [ ] Les fichiers juridiques (RGPD)
+- [ ] Changer le theme: dark et light
+- [ ] Acceptation des cookies.
+- [ ] Authentification: inscription et connexion
+- [ ] Gestion de posts: 
+	- [ ] Creation d'article
+	- [ ] Lecture de tous les articles
+	- [ ] Mise a jour d'un article
+	- [ ] Supprimer un article
+	- [ ] Commenter un post
+	- [ ] Liker un posts
+
+---
+
+## Obligatoire
+### Etape 1 : Mise en place de l'application
+1. [ ] Créer une application nommée blog-posts React avec vite sans typescript.
+2. [ ] Ajouter la librairie react-router-dom
+3. [ ] Créer deux composant dans le dossier pages: Home.jsx et Contact.jsx
+4. [ ] Ajouter le Routing dans App.jsx
+
+### Etape 2 : Mise en place des librairies de style
+Guide à suivre: [Guide de mise en place de Tailwind et Shadcn](https://ui.shadcn.com/docs/installation/vite)
+1. [ ] Installer tailwind
+2. [ ] Initialiser ShadCN
+
+### Etape 3 : Mise en place du Layout
+En suivant la maquette donnée:
+1. [ ] Créer une barre de navigation responsive
+2. [ ] Créer un footer responsive
+
+### Etape 4 : Mise en place de l'authentification
+
+1. [ ] Une page d'authentification: '/authentification'
+2. [ ] Créer deux composant: LoginForm et SignupForm
+3. [ ] Afficher les les composants conditionnellement.
+4. [ ] Permettre a l'utilisateur de changer de formulaire (Inscription ou connexion)
+
+### Etape 5 : Implémenter les formulaires d'inscription
+
+1. [ ] Ajouter les librairie: `zod` et `react-hook-form`
+2. [ ] Utiliser les librairies pour Implémenter le formulaire d'inscription avec:
+		- username: Obligatoire
+		- email: Obligatoire et valide
+		-  mot de passe: Obligatoire et minimum 6 caractères.
+		- Confirmer le mot de passe: Obligatoire, minimum 6 caractères et identique au mot de passe
+3. [ ]  Afficher les erreur a la suite des inputs.
+4. [ ]  Implémenté la fonction de soumission du formulaire: (Affiche une alerte avec :"Inscription réussie.")
+
+### Etape 6 : Implémenter les formulaires de connexion
+
+1. [ ] Implémenter le formulaire d'inscription avec:
+		- email: Obligatoire et valide
+		- mot de passe: Obligatoire et minimum 6 caractères.
+3. [ ]  Afficher les erreur a la suite des inputs.
+4. [ ]  Implémenté la fonction de soumission du formulaire: (Affiche une alerte avec :"Connexion réussie.")
+
+## Exemple fourni:
+Implémentation de l'inscription avec la backend
+
+### Etape 7  : Implémenter la connexion avec la backend
+
+1. [ ] Effectuer la requête sur l'url `/api/users/login` avec: 
+		- email: Obligatoire et valide
+		- mot de passe: Obligatoire et minimum 8 caractères.
+3. [ ]  Afficher l''erreur si la requête échoue.
+
+### Etape 8  : Persister l'authentification
+
+1. [ ] Stocker le token dans le local storage
+2. [ ] Dans App.jsx
+	1. [ ] Créer un context
+	2. [ ] Créer une variable d'état et sa fonction (user et setUser)
+	3. [ ] Mettre la variable d'état et sa fonction dans le contexte
+3. [ ] Dans le LoginForm
+	1. [ ] Utiliser le context pour stocker les données de l'utilisateur dans la variable d'état
+
+### Etape 9  : Persister l'authentification
+Dans App.jsx
+1. [ ] Utiliser un useEffect pour récupérer les données de l'utilisateur avec le token (`/api/users/me`).
+2. [ ] Charger les données dans le contexte.
+
+### Etape 10  : Déconnexion
+1. [ ] Ajouter dans la barre de navigation un bouton de déconnexion
+2. [ ] lors du clique sur le bouton de déconnexion:
+	1. [ ] Supprimer le token du local storage
+	2. [ ] Mettre la variable d'état user a `null`
+
+	### Etape 11: page profile
+
+	// Afficher les données de l'utilisateur (stockés dans le contexte) dans la page de profil.
+// Afficher conditionnellement une image avatar de l'utilisateur suivant 
+// si la propriété avatarUrl existe ou non.
+//  (Afficher une image par défaut si l'utilisateur n'a pas d'urll pour l'avatar)
+
+
+Etape 12  : Modification du profile
+Implémenter la fonctionnalité permettant a l'utilisateur de changer ses données: username et avatar.
+Dans le front:
+1.[ ] Ajouter un formulaire pour modifier le username et l'avatar (Donne un URL vers une image)
+2.[ ]  Lors de la soumission du formulaire, envoyer une requête PUT vers "/api/me"
+
+Dans la back
+1.[ ] Ajouter la route PUT sur /api/me
+2.[ ] Récupérer les données du corps de la requête
+3.[ ] Valider les données sinon retourner 400
+4.[ ] Verifier le token de l'utilisateur sinon retourner 401
+5.[ ] Modifier l'utilisateur dans la base de données
+6.[ ] Retourner l'utilisateur dans la réponse
+
+```

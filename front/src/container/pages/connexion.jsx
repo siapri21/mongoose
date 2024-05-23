@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Connexion() {
-    
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
 
@@ -26,9 +28,14 @@ export default function Connexion() {
     setPassword(e.target.value);
 
     if (password.length < 6) {
-      return setPasswordError("votre email est incorect");
+      return setPasswordError("le mot doit etre au moins 6 caractères");
     }
   }
+
+  const [formMessage, setFormMessage] = useState({
+    success: false,
+    message: "",
+  });
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -41,17 +48,29 @@ export default function Connexion() {
       password: password,
     };
 
-    const response = await fetch("/api/users/connextion", {
+    // *on fait une requette
+    // Créer un route: /api/user/connexion
+    const response = await fetch("/api/users/connexion", {
       method: "POST",
       body: JSON.stringify(user),
-      headers: { "Type-Content": "application/json" },
+      headers: { "Content-Type": "application/json" },
     });
 
     if (!response.ok) {
       if (response.status === 401) {
-        return setFormMessage("this email is already used");
+        return setFormMessage({
+          success: false,
+          message: "identification incorrecte",
+        });
       }
     }
+
+    const data = await response.json();
+    console.log(data);
+    localStorage.setItem("access_token", data.access_token);
+    navigate("/profile");
+
+    return setFormMessage({ success: true, message: "successfull connexion" });
   }
 
   return (

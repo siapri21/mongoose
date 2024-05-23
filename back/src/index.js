@@ -2,6 +2,7 @@
 import express from "express"
 import mongoose, { get } from 'mongoose';
 import {  todoRoute } from "./routes/todos-routes.js";
+import { usersRouter } from "./routes/users-route.js";
 
 
 // Ajouter une sur l'url "/api/ping" method GET
@@ -25,6 +26,7 @@ serveur.get("/api/ping" , (req, res) => {
 })
 // creer une route 
 serveur.use('/api/todos', todoRoute);
+serveur.use('/api/users', usersRouter);
 serveur.listen(PORT, () =>{
     console.log(`lance le serveur`);
     console.log(`http://localhost:${PORT}`);
