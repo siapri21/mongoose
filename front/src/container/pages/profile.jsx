@@ -10,6 +10,7 @@ export default function Profile() {
   const [posts, setuserPost] = useState([]);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
+  
   useEffect(() => {
     async function getPost() {
       if (!user) {
@@ -110,27 +111,28 @@ export default function Profile() {
 
   console.log(posts);
   return (
-    <div className="profile-container">
-      {/* l'avatar d'utilisateur */}
-      {user.avaterUrl ? (
+    <div className={classes.profile_container}>
+    <div className={classes.profiles}>
+        {/* l'avatar d'utilisateur */}
+        {user.avaterUrl ? (
         <img
           src={user.avaterUrl}
           alt="Avatar d'utilisateur"
-          className="profile-avatar"
+          className={classes.profile_avatar}
         />
       ) : (
-        <CiUser className="avatar" />
+        <CiUser className={classes.avatar} />
       )}
-      <div className="profile-info">
-        <p className="username">{user.username}</p>
-        <p className="email">{user.email}</p>
+      <div className={classes.profile_info}>
+        <p className={classes.username}>{user.username}</p>
+        <p className={classes.email}>{user.email}</p>
       </div>
 
       <div>
-        <button>Modifier les informations</button>
+        <button className={classes.infos}>Modifier les informations</button>
       </div>
 
-      <div className="profile-form">
+      <div className={classes.profile_form}>
         <div>
           <input
             type="text"
@@ -152,8 +154,10 @@ export default function Profile() {
           <p>{avatarError}</p>
         </div>
 
-        <button onClick={handleSubmit}>Enregistre</button>
+        <button onClick={handleSubmit} className={classes.infos}>Enregistre</button>
       </div>
+    </div>
+
       <div className={classes.parent}>
         {posts.map((postUser) => {
           return (

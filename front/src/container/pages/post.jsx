@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../App";
 
@@ -12,12 +12,28 @@ export default function Posts() {
 
 const navigate = useNavigate()
 
-const [imageUrl, setImageUrl] = useState("")
 
 const [message , setMessage] = useState({
     success: false,
     message: "",
 })
+
+const [imageUrl, setImageUrl] = useState("")
+const[imageUrlError, setImageUrlError] = useState("")
+
+function handleImageUrl(e) {
+  setImageUrlError("")
+  setImageUrl(e.target.value)
+   
+  if (imageUrl == "") {
+    return setImageUrlError("URL d'image obligatoire");
+  }else if (!isValidImageUrl(imageUrl)) {
+    setImageUrlError("url d'image invalide")
+  }
+}
+function isValidImageUrl(url) {
+  return (url.match(/\.(jpeg|jpg|gif|png)$/) != null)
+}
 
 
 const [title, setTitle] = useState("")
@@ -33,11 +49,9 @@ function handleTitle(e) {
 
 }   
 
-
 const [description, setDescription] = useState("")
 const [descriptionError, setDescriptonError] = useState("");
   
-    
     function handleDescription(e) {
       setDescriptonError("");
       setDescription(e.target.value);
@@ -85,7 +99,6 @@ const [descriptionError, setDescriptonError] = useState("");
         } 
     }
 
-    
 
     return (
         <>
@@ -93,7 +106,19 @@ const [descriptionError, setDescriptonError] = useState("");
           <h2>Créer une post </h2>
         <div>
       <form action="">
-      
+
+        <div>
+
+        </div>
+        <label htmlFor="title">image: </label>
+          <input
+            type="text"
+            id="text"
+            placeholder="http://exemple.png"
+            value={imageUrl}
+            onChange={handleImageUrl}
+          />
+          <p>{titleError}</p>
         <div>
           <label htmlFor="title">Titre: </label>
           <input
