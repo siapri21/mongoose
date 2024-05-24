@@ -6,6 +6,7 @@ import Home from "./container/pages/home";
 import Connexion from "./container/pages/connexion";
 import  Inscription from './container/pages/inscription';
 import Profile from "./container/pages/profile.jsx";
+import Posts from './container/pages/post.jsx';
 
 
 export const UserContext = createContext();
@@ -38,6 +39,7 @@ function App() {
       setUser(user);
       
     }
+
     getUser();
   }, []);
 
@@ -64,9 +66,10 @@ function App() {
               <Link to={"/connexion"}>Connexion</Link>
             </> 
           ) : (
-
+            
             <>
 
+            <Link to= {"/post"}>Posts</Link>
              <Link to={"/profile"}>Profile</Link>
                 <button
                   style={{ backgroundColor: "red"
@@ -84,6 +87,9 @@ function App() {
         <Route path="/inscription" element={<Inscription />}/>
         <Route path="/connexion" element={<Connexion />}/>
         <Route path="/profile" element={<Profile />}/>
+        <Route path="/post" element={<Posts />}/>
+       
+       
       </Routes>
     </BrowserRouter>
     </UserContext.Provider>

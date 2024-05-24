@@ -112,4 +112,42 @@ Dans la back
 5.[ ] Modifier l'utilisateur dans la base de données
 6.[ ] Retourner l'utilisateur dans la réponse
 
+
+Etape 13  : Créer des posts
+Implémenté la fonctionnalité permettant a l'utilisateur de créer des posts (title, description, content, imageUrl):  (method: POST - URL: `/api/posts)
+
+Dans le back:
+1.[ ] Créer un schema et model pour les posts: (id, userID, title, description, imageUrl)
+2.[ ] Ajouter la route POST /api/posts
+3.[ ] Récupérer les données dans le corps de la requête
+4.[ ] Valider les données sinon 400
+5.[ ] Verifier la validité tu token sinon 401
+6.[ ] Créer le post dans la base de données
+7.[ ] Retourner le nouveau post
+
+Dans le front:
+1.[ ] Créer un formulaire avec messages d'erreurs. (title: obligatoire, description: obligatoire)
+2.[ ] Envoyer une requête avec les données et le token lors de la soumission du formulaire
+
+
+Etape 14  :  Afficher les posts de l'utilisateur
+Dans le back:
+1.[ ] Ajouter la route GET /api/me/posts
+2.[ ] Récupérer et retourner les post dont userID est égale a l'identifiant de l'utilisateur récupérer dans le token
+
+Dans la page de profile:
+1.[ ] Utiliser un useEffect pour Récupérer tous les posts de l'utilisateur (method: GET  - /api/users/me/posts ).
+2.[ ] Stocker les articles dans une variables d'état
+3.[ ] Utiliser la method map, pour afficher tous les articles
+
+Pour ajouter les image pour les posts:
+Dans le front:
+	1. Ajouter un champs texte pour imageUrl dans le formulaire
+	2. Envoyer imageUrl
+
+Dans le back:
+	1. Modifier le schema de post pour ajouter un champ:
+	imageUrl: String
+	2. Dans la route pour créer un post, récuperer imageUrl dans le body
+	L'enregistrer dans la base données
 ```

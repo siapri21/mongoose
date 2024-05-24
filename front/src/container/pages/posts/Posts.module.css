@@ -1,0 +1,15 @@
+.container{
+    border: 1px solid royalblue;
+    padding: 20px;
+    width: 40%;
+}
+
+.parent{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.title{
+font-size: 1.5em;
+}

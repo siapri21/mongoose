@@ -67,7 +67,7 @@ export default function Connexion() {
 
     const data = await response.json();
     console.log(data);
-    localStorage.setItem("access_token", data.access_token);
+    localStorage.getItem("access_token", data.access_token);
     navigate("/profile");
 
     return setFormMessage({ success: true, message: "successfull connexion" });
